@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JIHYUN CHUN - Portfolio</title>
-<meta name="description" content="천지현 — 업무 자동화(RPA)·브라우저 확장 포트폴리오와 타투 세금 계산 웹 도구.">
+<meta name="description" content="천지현 — 업무 자동화(RPA) 포트폴리오와 타투 세금 계산 서비스 잉크장부.">
 <link rel="stylesheet" href="assets/inter-tight.css">
 <style>
 
@@ -43,196 +43,64 @@
     text-rendering: optimizeLegibility;
     word-break: keep-all; overflow-wrap: break-word;
   }
-  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
-  @media (max-width: 640px) { .wrap { padding: 0 24px; } }
-
-  .eyebrow {
-    font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.2em;
-    color: var(--muted); font-weight: 600;
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
 
-  /* ---------- header ---------- */
-  .topbar { position: sticky; top: 0; z-index: 20;
-    background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line-soft); }
-  .topbar .wrap { display: flex; align-items: center; justify-content: flex-end; height: 72px; }
-  .topnav { display: flex; gap: 32px; }
-  .topnav a {
-    font-size: 0.82rem; color: var(--muted); text-decoration: none; position: relative;
-    letter-spacing: 0.01em; transition: color 0.2s;
-  }
-  .topnav a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px;
-    background: var(--ink); transition: width 0.25s ease; }
-  .topnav a:hover { color: var(--ink); }
-  .topnav a:hover::after { width: 100%; }
-  @media (max-width: 680px) { .topnav { display: none; } }
+  .split { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
 
-  /* ---------- hero ---------- */
-  .hero { padding: 100px 0 80px; }
-  .hero .eyebrow { display: block; margin-bottom: 30px; }
-  .hero h1 {
+  .pick {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 56px; text-decoration: none; color: inherit;
+    transition: background-color 0.25s;
+  }
+  .pick + .pick { border-left: 1px solid var(--line); }
+  .pick:hover { background: var(--surface); }
+  .pick:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; }
+
+  .pick .t {
     font-family: var(--display); font-weight: 500;
-    font-size: clamp(2.5rem, 6.2vw, 4.75rem); line-height: 1.04; letter-spacing: -0.02em;
-    margin: 0; text-wrap: balance; max-width: 20ch; color: var(--ink);
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem); line-height: 1.1; letter-spacing: -0.015em;
+    margin: 0; color: var(--ink);
   }
-  .hero h1 em { font-style: italic; color: var(--ink-soft); }
-  .nw { white-space: nowrap; }
-  .hero .ko-lead {
-    font-size: clamp(1.1rem, 2.3vw, 1.4rem); color: var(--ink-soft); font-weight: 500;
-    margin: 26px 0 0;
+  .pick .ko { font-size: 1.05rem; color: var(--muted); margin: 12px 0 0; font-weight: 500; }
+  .pick .cta {
+    margin-top: 34px; align-self: flex-start;
+    font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink);
+    border: 1px solid var(--line); border-radius: 2px; padding: 8px 15px; white-space: nowrap;
+    transition: border-color 0.2s;
   }
-  .hero .desc { color: var(--muted); font-size: 1.02rem; max-width: 58ch; margin: 30px 0 0; }
-  .hero .desc .en { display: block; color: var(--faint); font-size: 0.92rem; margin-top: 10px; }
+  .pick:hover .cta { border-color: var(--ink); }
 
-  /* ---------- section head ---------- */
-  .sec-head { display: flex; align-items: baseline; justify-content: space-between;
-    padding: 86px 0 14px; }
-  .sec-head h2 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; margin: 0; letter-spacing: -0.01em; }
-  .sec-head .ko { color: var(--muted); font-weight: 400; font-size: 1.05rem; font-family: var(--sans); }
-  .sec-head .tally { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
-
-  /* ---------- project list ---------- */
-  .work { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .proj { padding: 42px 0; border-bottom: 1px solid var(--line); }
-  .proj-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
-  .proj-top .idx {
-    font-size: 0.8rem; letter-spacing: 0.06em; color: var(--muted); font-weight: 600;
-    font-variant-numeric: tabular-nums;
+  @media (max-width: 760px) {
+    .split { grid-template-columns: 1fr; }
+    .pick { padding: 72px 28px; }
+    .pick + .pick { border-left: 0; border-top: 1px solid var(--line); }
   }
-  .proj-top .ptype {
-    margin-left: auto; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--faint);
-  }
-  .repo-link {
-    font-size: 0.72rem; letter-spacing: 0.03em; color: var(--ink); text-decoration: none;
-    border: 1px solid var(--line); border-radius: 2px; padding: 3px 9px; white-space: nowrap;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .repo-link:hover { border-color: var(--ink); }
-  .repo-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-  .proj .ptitle {
-    font-family: var(--display); font-weight: 500; letter-spacing: -0.015em; line-height: 1.12;
-    font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin: 0; color: var(--ink);
-  }
-  .proj .ptitle a { color: inherit; text-decoration: none;
-    border-bottom: 1px solid var(--line); transition: border-color 0.2s; }
-  .proj .ptitle a:hover { border-color: var(--ink); }
-  .proj .pko { font-size: 1.02rem; color: var(--muted); margin: 8px 0 0; font-weight: 500; }
-  .proj .pdesc { color: var(--ink-soft); font-size: 1rem; max-width: 70ch; margin: 20px 0 0; }
-  .proj .pdesc .en { display: block; color: var(--faint); font-size: 0.9rem; margin-top: 9px; line-height: 1.55; }
-
-  .proj-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; margin-top: 26px; }
-  .stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .stack li {
-    font-size: 0.74rem; letter-spacing: 0.02em; color: var(--ink-soft);
-    border: 1px solid var(--line); border-radius: 2px; padding: 4px 10px; background: transparent;
-  }
-
-  /* ---------- footer ---------- */
-  footer { margin-top: 96px; border-top: 1px solid var(--line); padding: 72px 0 80px; }
-  footer .grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
-  footer .links { display: flex; flex-direction: column; gap: 14px; }
-  footer .links a { color: var(--ink); text-decoration: none; font-size: 1.05rem; display: inline-flex; align-items: baseline; gap: 14px; }
-  footer .links a .k { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--faint); min-width: 66px; }
-  footer .links a .v { border-bottom: 1px solid var(--line); transition: border-color 0.2s; }
-  footer .links a:hover .v { border-color: var(--ink); }
-  footer .note { max-width: 42ch; color: var(--muted); font-size: 0.84rem; }
-  footer .note .en { display: block; color: var(--faint); font-size: 0.78rem; margin-top: 7px; }
-
-  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="wrap">
-    <nav class="topnav">
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+<h1 class="sr-only">천지현 포트폴리오</h1>
 
-<main>
-  <section class="hero wrap" id="top">
-    <span class="eyebrow">Chun Jihyun &nbsp;—&nbsp; Automation · RPA</span>
-    <h1>I build small tools that <em>remove</em> <span class="nw">repetitive work.</span></h1>
-    <p class="ko-lead">반복되는 업무와 계산을 줄이는 도구를 만듭니다.</p>
-    <p class="desc">
-      게임 운영·CS의 반복 업무를 자동화한 RPA·브라우저 확장 프로젝트와, 타투 작업자의 세금 계산을 돕는 웹 도구를 모았습니다.
-      <span class="en">A collection of automation work — desktop RPA and browser extensions built for game operations and CS — alongside a web tool that helps tattoo artists work out their taxes.</span>
-    </p>
-  </section>
+<main class="split">
 
-  <section class="wrap" id="projects">
-    <div class="sec-head">
-      <h2>Projects <span class="ko">프로젝트</span></h2>
-      <span class="tally">02 Works</span>
-    </div>
+  <a class="pick" href="rpa.html">
+    <h2 class="t">Automation &amp; RPA</h2>
+    <p class="ko">업무 자동화 포트폴리오</p>
+    <span class="cta">포트폴리오 보기 ↗</span>
+  </a>
 
-    <ol class="work">
+  <!-- TODO: 잉크장부 사이트를 tattoo-tax/ 에 추가하면 아래 링크가 바로 연결됩니다.
+       다른 주소에 배포했다면 href 를 그 주소로 바꾸고 target="_blank" rel="noopener" 를 붙이세요. -->
+  <a class="pick" href="tattoo-tax/">
+    <h2 class="t">Tattoo Tax Calculator</h2>
+    <p class="ko">잉크장부</p>
+    <span class="cta">사이트 바로가기 ↗</span>
+  </a>
 
-      <li class="proj">
-        <div class="proj-top"><span class="idx">automation-rpa</span><span class="ptype">Portfolio · 5 Projects</span><a class="repo-link" href="rpa.html">포트폴리오 보기 ↗</a></div>
-        <h3 class="ptitle"><a href="rpa.html">Automation &amp; RPA</a></h3>
-        <p class="pko">업무 자동화 포트폴리오</p>
-        <p class="pdesc">
-          게임 운영·CS의 반복 업무를 데스크톱 RPA와 브라우저 확장으로 자동화한 5개 프로젝트입니다. 문제 정의부터 구현·배포·사용 가이드까지 단독으로 수행했습니다.
-          <span class="en">Five projects that automate repetitive game-operations and CS tasks with desktop RPA and browser extensions — each owned solo from problem definition through deployment and user guides.</span>
-        </p>
-        <div class="proj-foot">
-          <ul class="stack"><li>Python</li><li>PySide6</li><li>JavaScript</li><li>Chrome MV3</li><li>Google APIs</li></ul>
-        </div>
-      </li>
-
-      <!-- TODO: 타투 세금 계산기 — 사이트를 tattoo-tax/ 에 추가한 뒤
-           (1) ptype의 "준비 중"을 떼고, (2) ptitle을 <a href="tattoo-tax/">로 감싸고,
-           (3) proj-top 끝에 <a class="repo-link" href="tattoo-tax/">사이트 보기 ↗</a> 를 넣고,
-           (4) 아래 pdesc 본문과 stack 항목을 실제 내용으로 교체하세요. -->
-      <li class="proj">
-        <div class="proj-top"><span class="idx">tattoo-tax</span><span class="ptype">Web App · 준비 중</span></div>
-        <h3 class="ptitle">Tattoo Tax Calculator</h3>
-        <p class="pko">타투 작업자 세금 계산기</p>
-        <p class="pdesc">
-          타투 작업자가 수입과 경비를 입력하면 예상 세액을 계산해주는 웹 도구입니다. 세무 지식 없이도 신고 전에 대략적인 금액을 확인할 수 있도록 만들었습니다.
-          <span class="en">A web tool that estimates tax owed from income and expenses, so tattoo artists can get a rough figure before filing without needing tax expertise.</span>
-        </p>
-        <div class="proj-foot">
-          <ul class="stack"><li>JavaScript</li><li>HTML / CSS</li></ul>
-        </div>
-      </li>
-
-    </ol>
-  </section>
 </main>
 
-<footer id="contact">
-  <div class="wrap">
-    <div class="sec-head" style="padding: 0 0 32px;">
-      <h2>Contact <span class="ko">연락처</span></h2>
-    </div>
-    <div class="grid">
-      <div class="links">
-        <a href="mailto:chunjh525@gmail.com"><span class="k">Email</span><span class="v">chunjh525@gmail.com</span></a>
-        <a href="https://github.com/intothinair0525"><span class="k">GitHub</span><span class="v">github.com/intothinair0525</span></a>
-      </div>
-      <p class="note">
-        원본 코드·데이터는 사내 자산이며 개인정보·내부 시스템 정보를 포함하여 비공개입니다. 본 페이지는 수행 내용을 민감 정보 없이 요약한 것입니다.
-        <span class="en">Source code and data are company-confidential (PII and internal system details). This page summarizes the work with all sensitive details removed.</span>
-      </p>
-    </div>
-  </div>
-</footer>
-
-<script>
-  (function () {
-    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-      a.addEventListener("click", function (ev) {
-        var t = document.querySelector(a.getAttribute("href"));
-        if (t) { ev.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
-      });
-    });
-  })();
-</script>
 </body>
 </html>
