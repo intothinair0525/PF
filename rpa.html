@@ -54,7 +54,7 @@
   .topbar { position: sticky; top: 0; z-index: 20;
     background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--line-soft); }
-  .topbar .wrap { display: flex; align-items: center; justify-content: flex-end; height: 72px; }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
   .brand { font-family: var(--display); font-size: 1.3rem; letter-spacing: 0.01em; font-weight: 500; }
   .topnav { display: flex; gap: 32px; }
   .topnav a {
@@ -110,13 +110,14 @@
     margin-left: auto; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em;
     color: var(--faint);
   }
-  .repo-link {
+  .repo-link, .home {
     font-size: 0.72rem; letter-spacing: 0.03em; color: var(--ink); text-decoration: none;
     border: 1px solid var(--line); border-radius: 2px; padding: 3px 9px; white-space: nowrap;
     transition: border-color 0.2s, color 0.2s;
   }
-  .repo-link:hover { border-color: var(--ink); }
+  .repo-link:hover, .home:hover { border-color: var(--ink); }
   .repo-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .home { padding: 5px 11px; }
   .proj .ptitle {
     font-family: var(--display); font-weight: 500; letter-spacing: -0.015em; line-height: 1.12;
     font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin: 0; color: var(--ink);
@@ -187,8 +188,8 @@
 
 <header class="topbar">
   <div class="wrap">
+    <a class="home" href="index.html">← Main</a>
     <nav class="topnav">
-      <a href="index.html">Index</a>
       <a href="#work">Work</a>
       <a href="#approach">Approach</a>
       <a href="#contact">Contact</a>
