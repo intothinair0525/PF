@@ -196,9 +196,9 @@
   <section class="hero wrap" id="top">
     <span class="eyebrow">Chun Jihyun &nbsp;—&nbsp; Automation · RPA</span>
     <h1><span class="nw">A set of <em>automation tools</em></span> <span class="nw">I built for game operations.</span></h1>
-    <p class="ko-lead">게임 운영·CS 업무를 위해 만든 자동화 도구 모음입니다.</p>
+    <p class="ko-lead">게임 운영·CS 업무를 위해 개발한 자동화 도구 모음입니다.</p>
     <p class="desc">
-      현업의 번거로운 반복 작업 과정을 줄이기 위해, 기획부터 배포·가이드까지 데스크톱 RPA와 브라우저 확장 프로그램으로 자동화했습니다.
+      현업의 반복 작업 과정을 줄이기 위해, 기획부터 배포·가이드까지 데스크톱 RPA와 브라우저 확장 프로그램으로 자동화했습니다.
       <span class="en">To reduce the tedious, repetitive parts of day-to-day work, I automated them with desktop RPA and browser extensions — owning everything from planning through deployment and user guides.</span>
     </p>
 
@@ -221,7 +221,7 @@
       <li class="proj">
         <div class="proj-top"><span class="idx">daum-cafe-editor</span><span class="ptype">Chrome Extension · MV3</span><a class="repo-link" href="https://github.com/intothinair0525/PF/tree/main/case-studies" target="_blank" rel="noopener">GitHub ↗</a></div>
         <h3 class="ptitle">Daum Cafe Editor Auto-Style</h3>
-        <p class="pko">다음 카페 에디터 자동 서식</p>
+        <p class="pko">다음 카페 에디터 서식 자동화</p>
         <div class="proj-stats">
           <div><span class="k">Period</span>2026.09.29 – 10.27</div>
           <div><span class="k">Est. resource</span>0.0521 MM</div>
@@ -232,7 +232,7 @@
         </p>
         <div class="proj-foot">
           <ul class="stack"><li>JavaScript</li><li>Chrome MV3</li><li>KEditor / TinyMCE</li><li>Terser Build</li></ul>
-          <p class="impact"><span class="ilabel">Impact</span> 수기 서식 반복 <span class="arrow">→</span> 프리셋 원클릭</p>
+          <p class="impact"><span class="ilabel">Impact</span> 서식 적용 반복 <span class="arrow">→</span> 프리셋 원클릭</p>
         </div>
       </li>
 
@@ -245,12 +245,12 @@
           <div><span class="k">Est. resource</span>0.03 MM</div>
         </div>
         <p class="pdesc">
-          Drive에 쌓이는 평가 파일을 상담원별로 분류하고, 서식까지 보존해 개인 평가 문서에 <span class="nw">자동 적재하는</span> 프로그램입니다. 처리 이력 기반 멱등성과 지수 백오프 재시도를 내장했습니다.
-          <span class="en">Classifies the evaluation files piling up in Drive by agent and writes them into each agent's evaluation doc with formatting preserved — idempotent by processing history, with exponential-backoff retries built in.</span>
+          Drive에 저장된 상담품질 평가 파일을 상담원별로 자동 분류하고, 기존 서식을 유지한 채 <span class="nw">각 상담원의 개인 평가 문서에 취합하는</span> 프로그램입니다. 처리 이력을 관리해 중복 반영을 방지하고, 오류 발생 시 지수 백오프 방식으로 재시도합니다.
+          <span class="en">Automatically collects QA evaluation files from Drive, sorts them by agent, and consolidates the data into individual evaluation documents while preserving formatting. Prevents duplicate entries through processing history and uses exponential backoff for error recovery.</span>
         </p>
         <div class="proj-foot">
           <ul class="stack"><li>Python</li><li>PySide6</li><li>Drive / Sheets API</li><li>PyInstaller</li><li>Pyarmor</li></ul>
-          <p class="impact"><span class="ilabel">Impact</span> 상담원별 수기 전사 <span class="arrow">→</span> 서식 보존 자동 적재</p>
+          <p class="impact"><span class="ilabel">Impact</span> 상담원별 수동 분류 <span class="arrow">→</span> 자동 적재</p>
         </div>
       </li>
 
@@ -263,12 +263,12 @@
           <div><span class="k">Est. resource</span>0.06 MM</div>
         </div>
         <p class="pdesc">
-          JS 렌더링 게시판까지 순회해 신규 글만 중복 없이 Google Sheets에 수집. 수집 대상은 코드가 아닌 시트에서 관리해, 개발자 개입 없이 이용자가 운영 변경이 가능합니다.
-          <span class="en">Crawls even JS-rendered boards and collects only new posts into Sheets, de-duplicated — the target list lives in a sheet, so ops can change it without touching code.</span>
+          JS로 동적으로 렌더링되는 게시판까지 순회하며 신규 게시글만 중복 없이 Google Sheets에 수집합니다. 수집 대상 사이트 목록도 시트에서 관리해, 코드 수정 없이 이용자가 직접 변경할 수 있습니다.
+          <span class="en">Crawls web boards, including JavaScript-rendered pages, and collects only new posts in Google Sheets without duplicates. Users can manage and update the target site list directly in Sheets, without modifying the code.</span>
         </p>
         <div class="proj-foot">
           <ul class="stack"><li>Python</li><li>Playwright</li><li>Sheets API</li><li>OAuth 2.0</li><li>PySide6</li></ul>
-          <p class="impact"><span class="ilabel">Impact</span> 매일 사이트 순회 <span class="arrow">→</span> 원클릭 수집</p>
+          <p class="impact"><span class="ilabel">Impact</span> 주기별 수동 취합 <span class="arrow">→</span> 원클릭 수집</p>
         </div>
       </li>
 
@@ -299,12 +299,12 @@
           <div><span class="k">Est. resource</span>0.092 MM</div>
         </div>
         <p class="pdesc">
-          이미지를 1장씩만 받던 운영 어드민 에디터에서 업로드 다이얼로그 흐름을 자동 반복해 여러 장을 순차 업로드할 수 있게 만든 확장 프로그램입니다. 단계별 타임아웃과 실패 건너뛰기로 대량 처리에도 안정적입니다.
-          <span class="en">A Chrome extension that automates CKEditor's one-at-a-time upload dialog to post <span class="nw">many images in sequence</span> — per-step timeouts and skip-on-failure keep large batches stable.</span>
+          이미지를 한 장씩만 업로드할 수 있는 운영 어드민 에디터에서 업로드 창을 자동으로 반복 실행해 여러 이미지를 순차 업로드하는 크롬 확장 프로그램입니다. 단계별 타임아웃과 실패 건너뛰기 기능으로 대량 업로드의 안정성을 높였습니다.
+          <span class="en">A Chrome extension that automates CKEditor's single-image upload process, allowing multiple images to be uploaded sequentially. Per-step timeouts and skip-on-failure handling improve reliability when processing large batches.</span>
         </p>
         <div class="proj-foot">
           <ul class="stack"><li>JavaScript</li><li>Chrome MV3</li><li>CKEditor 4</li><li>Node.js</li></ul>
-          <p class="impact"><span class="ilabel">Impact</span> 1장씩 수십 번 클릭 <span class="arrow">→</span> 큐 일괄 업로드</p>
+          <p class="impact"><span class="ilabel">Impact</span> 개별 업로드 <span class="arrow">→</span> 큐 일괄 업로드</p>
         </div>
       </li>
 
@@ -316,8 +316,8 @@
       <h2>Approach <span class="ko">작업 방식</span></h2>
     </div>
     <p class="big">
-      문제를 발견하고 정의하며, 실무에 적용할 수 있도록 구체화하는 과정입니다.
-      <span class="en">The process of finding and defining a problem, then shaping it for real-world use.</span>
+      현업의 문제를 발견하고 정의해, 실제 업무에 적용할 수 있는 자동화 도구로 구현하는 과정입니다.
+      <span class="en">A process of identifying and defining real-world problems, then turning them into practical automation solutions.</span>
     </p>
 
     <ol class="steps">
@@ -325,8 +325,8 @@
         <span class="num">01</span>
         <div>
           <h3 class="step-title">Define <span class="ko">문제 정의</span></h3>
-          <p class="step-desc">현업의 업무 문제를 실무자와 회의하며 구체화합니다.
-            <span class="en">Pin down the real problems with the people who do the work.</span>
+          <p class="step-desc">실무자와 소통하며 반복 업무와 개선이 필요한 지점을 파악합니다.
+            <span class="en">Identify repetitive tasks and pain points through discussions with the people who do the work.</span>
           </p>
         </div>
       </li>
@@ -334,8 +334,8 @@
         <span class="num">02</span>
         <div>
           <h3 class="step-title">Design <span class="ko">프로세스 설계</span></h3>
-          <p class="step-desc">업무 과정을 자동화 프로세스로 재설계하고 범위를 기획합니다.
-            <span class="en">Redesign the manual workflow as automation and scope it.</span>
+          <p class="step-desc">기존 업무 흐름을 분석하고 자동화 범위와 실행 방식을 설계합니다.
+            <span class="en">Analyze existing workflows and define the scope and approach for automation.</span>
           </p>
         </div>
       </li>
@@ -343,26 +343,26 @@
         <span class="num">03</span>
         <div>
           <h3 class="step-title">Build <span class="ko">구현</span></h3>
-          <p class="step-desc">AI 에이전트를 활용해 프로그램으로 구현합니다.
-            <span class="en">Build the program, pairing with AI agents.</span>
+          <p class="step-desc">AI 에이전트를 활용해 설계한 프로세스를 실제 프로그램으로 구현합니다.
+            <span class="en">Build working solutions based on the planned workflow, using AI agents as development tools.</span>
           </p>
         </div>
       </li>
       <li>
         <span class="num">04</span>
         <div>
-          <h3 class="step-title">Verify <span class="ko">검증·빌드</span></h3>
-          <p class="step-desc">오류 점검 및 보안 문제 검토 후 배포 가능한 형태로 빌드합니다.
-            <span class="en">Check for errors and security issues, then build for release.</span>
+          <h3 class="step-title">Verify <span class="ko">검증</span></h3>
+          <p class="step-desc">기능과 예외 상황을 테스트하고 오류 및 보안 문제를 점검합니다.
+            <span class="en">Test functionality and edge cases, checking for errors and security issues.</span>
           </p>
         </div>
       </li>
       <li>
         <span class="num">05</span>
         <div>
-          <h3 class="step-title">Ship <span class="ko">실무 적용</span></h3>
-          <p class="step-desc">현업에 적용하고 가이드와 함께 전달합니다.
-            <span class="en">Put it to work and hand it over with a guide.</span>
+          <h3 class="step-title">Ship <span class="ko">배포 및 적용</span></h3>
+          <p class="step-desc">실무 환경에 배포하고 사용 가이드를 제공해 현업에서 활용할 수 있도록 합니다.
+            <span class="en">Deploy the solution into the actual work environment and provide user guides for adoption.</span>
           </p>
         </div>
       </li>
