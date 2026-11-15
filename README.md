@@ -12,6 +12,7 @@
 |---|---|
 | `index.html` | 메인(허브) — 두 작업물로 들어가는 진입점 |
 | `rpa.html` | 업무 자동화 포트폴리오 (5개 프로젝트) |
+| `tatoo/` | **잉크장부** — 타투이스트 수입·경비 기록과 종합소득세 미리보기 (단일 HTML) |
 | `assets/inter-tight.css` | 제목용 Inter Tight 폰트 4종 (base64 woff2 내장, 두 페이지 공용) |
 | `case-studies/` | 프로젝트별 케이스 스터디 |
 
