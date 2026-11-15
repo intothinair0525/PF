@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JIHYUN CHUN - RPA Portfolio</title>
+<link rel="stylesheet" href="assets/inter-tight.css">
+<style>
+
+  :root {
+    --bg: #F0F2F5;
+    --surface: #E7EAEE;
+    --ink: #181A1D;
+    --ink-soft: #3A3E44;
+    --muted: #5E636B;
+    --faint: #8A9099;
+    --line: #D7DBE0;
+    --line-soft: #E3E6EA;
+    --maxw: 1080px;
+    --display: "Inter Tight", system-ui, "Segoe UI", sans-serif;
+    --sans: "Noto Sans KR", "Noto Sans", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121417; --surface: #1A1D21; --ink: #E8EBEF; --ink-soft: #C9CDD3;
+      --muted: #969CA4; --faint: #6A7079; --line: #282C32; --line-soft: #222529;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #F0F2F5; --surface: #E7EAEE; --ink: #181A1D; --ink-soft: #3A3E44;
+    --muted: #5E636B; --faint: #8A9099; --line: #D7DBE0; --line-soft: #E3E6EA;
+  }
+  :root[data-theme="dark"] {
+    --bg: #121417; --surface: #1A1D21; --ink: #E8EBEF; --ink-soft: #C9CDD3;
+    --muted: #969CA4; --faint: #6A7079; --line: #282C32; --line-soft: #222529;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); line-height: 1.62; -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    word-break: keep-all; overflow-wrap: break-word;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 640px) { .wrap { padding: 0 24px; } }
+
+  .eyebrow {
+    font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.2em;
+    color: var(--muted); font-weight: 600;
+  }
+
+  /* ---------- header ---------- */
+  .topbar { position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line-soft); }
+  .topbar .wrap { display: flex; align-items: center; justify-content: flex-end; height: 72px; }
+  .brand { font-family: var(--display); font-size: 1.3rem; letter-spacing: 0.01em; font-weight: 500; }
+  .topnav { display: flex; gap: 32px; }
+  .topnav a {
+    font-size: 0.82rem; color: var(--muted); text-decoration: none; position: relative;
+    letter-spacing: 0.01em; transition: color 0.2s;
+  }
+  .topnav a::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px;
+    background: var(--ink); transition: width 0.25s ease; }
+  .topnav a:hover { color: var(--ink); }
+  .topnav a:hover::after { width: 100%; }
+  @media (max-width: 680px) { .topnav { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 100px 0 80px; }
+  .hero .eyebrow { display: block; margin-bottom: 30px; }
+  .hero h1 {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(2.5rem, 6.2vw, 4.75rem); line-height: 1.04; letter-spacing: -0.02em;
+    margin: 0; text-wrap: balance; max-width: 20ch; color: var(--ink);
+  }
+  .hero h1 em { font-style: italic; color: var(--ink-soft); }
+  .nw { white-space: nowrap; }
+  .hero .ko-lead {
+    font-size: clamp(1.1rem, 2.3vw, 1.4rem); color: var(--ink-soft); font-weight: 500;
+    margin: 26px 0 0;
+  }
+  .hero .desc { color: var(--muted); font-size: 1.02rem; max-width: 58ch; margin: 30px 0 0; }
+  .hero .desc .en { display: block; color: var(--faint); font-size: 0.92rem; margin-top: 10px; }
+
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 48px;
+    padding-top: 28px; border-top: 1px solid var(--line);
+  }
+  .meta-row .item .k { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--faint); margin-bottom: 5px; }
+  .meta-row .item .v { font-size: 0.95rem; color: var(--ink-soft); }
+
+  /* ---------- section head ---------- */
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between;
+    padding: 86px 0 14px; }
+  .sec-head h2 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; margin: 0; letter-spacing: -0.01em; }
+  .sec-head .ko { color: var(--muted); font-weight: 400; font-size: 1.05rem; font-family: var(--sans); }
+  .sec-head .tally { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+
+  /* ---------- project list ---------- */
+  .work { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .proj { padding: 42px 0; border-bottom: 1px solid var(--line); }
+  .proj-top { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .proj-top .idx {
+    font-size: 0.8rem; letter-spacing: 0.06em; color: var(--muted); font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .proj-top .ptype {
+    margin-left: auto; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--faint);
+  }
+  .repo-link {
+    font-size: 0.72rem; letter-spacing: 0.03em; color: var(--ink); text-decoration: none;
+    border: 1px solid var(--line); border-radius: 2px; padding: 3px 9px; white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .repo-link:hover { border-color: var(--ink); }
+  .repo-link:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .proj .ptitle {
+    font-family: var(--display); font-weight: 500; letter-spacing: -0.015em; line-height: 1.12;
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin: 0; color: var(--ink);
+  }
+  .proj .pko { font-size: 1.02rem; color: var(--muted); margin: 8px 0 0; font-weight: 500; }
+  .proj .pdesc { color: var(--ink-soft); font-size: 1rem; max-width: 70ch; margin: 20px 0 0; }
+  .proj .pdesc .en { display: block; color: var(--faint); font-size: 0.9rem; margin-top: 9px; line-height: 1.55; }
+  .proj-stats { display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 14px; }
+  .proj-stats > div { font-size: 0.86rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .proj-stats .k { font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--faint); margin-right: 9px; }
+
+  .proj-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; margin-top: 26px; }
+  .stack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack li {
+    font-size: 0.74rem; letter-spacing: 0.02em; color: var(--ink-soft);
+    border: 1px solid var(--line); border-radius: 2px; padding: 4px 10px; background: transparent;
+  }
+  .impact { margin: 0; margin-left: auto; font-size: 0.9rem; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+  .impact .ilabel { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--faint); }
+  .impact .arrow { color: var(--ink); }
+  @media (max-width: 720px) { .impact { margin-left: 0; width: 100%; } }
+
+  /* ---------- approach ---------- */
+  .approach { padding: 48px 0 0; }
+  .approach .big {
+    font-family: var(--display); font-weight: 500; font-size: clamp(1.1rem, 2vw, 1.35rem);
+    line-height: 1.5; letter-spacing: -0.005em; max-width: 66ch; margin: 0; color: var(--ink);
+  }
+  .approach .en { display: block; font-family: var(--sans); font-size: 0.98rem; color: var(--muted);
+    max-width: 62ch; margin-top: 10px; line-height: 1.6; }
+
+  /* ---------- approach steps ---------- */
+  .steps { list-style: none; margin: 40px 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .steps li { display: grid; grid-template-columns: 56px 1fr; gap: 0 24px; align-items: start;
+    padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .steps .num { font-family: var(--display); font-size: 1.5rem; font-weight: 500; line-height: 1;
+    color: var(--faint); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .steps .step-title { font-family: var(--display); font-weight: 500; font-size: 1.2rem;
+    letter-spacing: -0.01em; margin: 0; line-height: 1.2; color: var(--ink); }
+  .steps .step-title .ko { color: var(--muted); font-weight: 400; font-size: 0.95rem;
+    margin-left: 10px; font-family: var(--sans); }
+  .steps .step-desc { margin: 15px 0 0; color: var(--ink-soft); font-size: 0.98rem; max-width: 64ch; }
+  .steps .step-desc .en { display: block; color: var(--faint); font-size: 0.86rem;
+    margin-top: 5px; line-height: 1.55; }
+  @media (max-width: 520px) {
+    .steps li { grid-template-columns: 38px 1fr; gap: 0 16px; }
+    .steps .num { font-size: 1.2rem; }
+  }
+
+  /* ---------- footer ---------- */
+  footer { margin-top: 96px; border-top: 1px solid var(--line); padding: 72px 0 80px; }
+  footer .lead { font-family: var(--display); font-weight: 500; font-size: clamp(1.8rem, 4.5vw, 3rem);
+    letter-spacing: -0.015em; margin: 0 0 40px; color: var(--ink); line-height: 1.1; }
+  footer .grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; align-items: flex-start; }
+  footer .links { display: flex; flex-direction: column; gap: 14px; }
+  footer .links a { color: var(--ink); text-decoration: none; font-size: 1.05rem; display: inline-flex; align-items: baseline; gap: 14px; }
+  footer .links a .k { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--faint); min-width: 66px; }
+  footer .links a .v { border-bottom: 1px solid var(--line); transition: border-color 0.2s; }
+  footer .links a:hover .v { border-color: var(--ink); }
+  footer .note { max-width: 42ch; color: var(--muted); font-size: 0.84rem; }
+  footer .note .en { display: block; color: var(--faint); font-size: 0.78rem; margin-top: 7px; }
+
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <nav class="topnav">
+      <a href="index.html">Index</a>
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" id="top">
+    <span class="eyebrow">Chun Jihyun &nbsp;—&nbsp; Automation · RPA</span>
+    <h1><span class="nw">A set of <em>automation tools</em></span> <span class="nw">I built for game operations.</span></h1>
+    <p class="ko-lead">게임 운영·CS 업무를 위해 개발한 자동화 도구 모음입니다.</p>
+    <p class="desc">
+      현업의 반복 작업 과정을 줄이기 위해, 기획부터 배포·가이드까지 데스크톱 RPA와 브라우저 확장 프로그램으로 자동화했습니다.
+      <span class="en">To reduce the tedious, repetitive parts of day-to-day work, I automated them with desktop RPA and browser extensions — owning everything from planning through deployment and user guides.</span>
+    </p>
+
+    <div class="meta-row">
+      <div class="item"><span class="k">Role</span><span class="v">업무 자동화 개발 · Automation</span></div>
+      <div class="item"><span class="k">Focus</span><span class="v">Desktop RPA · Browser Extensions</span></div>
+      <div class="item"><span class="k">Stack</span><span class="v">Python · JavaScript · Google APIs</span></div>
+      <div class="item"><span class="k">Shipped</span><span class="v">5 projects, solo</span></div>
+    </div>
+  </section>
+
+  <section class="wrap" id="work">
+    <div class="sec-head">
+      <h2>Selected Work <span class="ko">주요 작업</span></h2>
+      <span class="tally">05 Projects</span>
+    </div>
+
+    <ol class="work">
+
+      <li class="proj">
+        <div class="proj-top"><span class="idx">daum-cafe-editor</span><span class="ptype">Chrome Extension · MV3</span><a class="repo-link" href="https://github.com/intothinair0525/PF/tree/main/case-studies" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <h3 class="ptitle">Daum Cafe Editor Auto-Style</h3>
+        <p class="pko">다음 카페 에디터 서식 자동화</p>
+        <div class="proj-stats">
+          <div><span class="k">Period</span>2026.09.29 – 10.27</div>
+          <div><span class="k">Est. resource</span>0.0521 MM</div>
+        </div>
+        <p class="pdesc">
+          색상 규칙·표/본문 폰트·구조 HTML을 프리셋으로 저장해 글쓰기 에디터에 자동으로 적용시키는 Chrome 확장 프로그램입니다.
+          <span class="en">A Chrome extension that saves color rules, table/body fonts, and structure HTML as presets and applies them automatically in the Daum Cafe post editor.</span>
+        </p>
+        <div class="proj-foot">
+          <ul class="stack"><li>JavaScript</li><li>Chrome MV3</li><li>KEditor / TinyMCE</li><li>Terser Build</li></ul>
+          <p class="impact"><span class="ilabel">Impact</span> 서식 적용 반복 <span class="arrow">→</span> 프리셋 원클릭</p>
+        </div>
+      </li>
+
+      <li class="proj">
+        <div class="proj-top"><span class="idx">qa-eval-aggregator</span><span class="ptype">Desktop RPA</span><a class="repo-link" href="https://github.com/intothinair0525/PF/blob/main/case-studies/qa-data-automation.md" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <h3 class="ptitle">QA Evaluation Data Aggregator</h3>
+        <p class="pko">상담품질(QA) 평가 데이터 취합 RPA</p>
+        <div class="proj-stats">
+          <div><span class="k">Period</span>2026.05.12 – 06.01</div>
+          <div><span class="k">Est. resource</span>0.03 MM</div>
+        </div>
+        <p class="pdesc">
+          Drive에 저장된 상담품질 평가 파일을 상담원별로 자동 분류하고, 기존 서식을 유지한 채 <span class="nw">각 상담원의 개인 평가 문서에 취합하는</span> 프로그램입니다. 처리 이력을 관리해 중복 반영을 방지하고, 오류 발생 시 지수 백오프 방식으로 재시도합니다.
+          <span class="en">Automatically collects QA evaluation files from Drive, sorts them by agent, and consolidates the data into individual evaluation documents while preserving formatting. Prevents duplicate entries through processing history and uses exponential backoff for error recovery.</span>
+        </p>
+        <div class="proj-foot">
+          <ul class="stack"><li>Python</li><li>PySide6</li><li>Drive / Sheets API</li><li>PyInstaller</li><li>Pyarmor</li></ul>
+          <p class="impact"><span class="ilabel">Impact</span> 상담원별 수동 분류 <span class="arrow">→</span> 자동 적재</p>
+        </div>
+      </li>
+
+      <li class="proj">
+        <div class="proj-top"><span class="idx">community-trend-collector</span><span class="ptype">Desktop RPA</span><a class="repo-link" href="https://github.com/intothinair0525/PF/blob/main/case-studies/community-trend-collector.md" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <h3 class="ptitle">Community Trend Collector</h3>
+        <p class="pko">게임 커뮤니티 동향 자동 취합 RPA</p>
+        <div class="proj-stats">
+          <div><span class="k">Period</span>2026.05.26 – 07.29</div>
+          <div><span class="k">Est. resource</span>0.06 MM</div>
+        </div>
+        <p class="pdesc">
+          JS로 동적으로 렌더링되는 게시판까지 순회하며 신규 게시글만 중복 없이 Google Sheets에 수집합니다. 수집 대상 사이트 목록도 시트에서 관리해, 코드 수정 없이 이용자가 직접 변경할 수 있습니다.
+          <span class="en">Crawls web boards, including JavaScript-rendered pages, and collects only new posts in Google Sheets without duplicates. Users can manage and update the target site list directly in Sheets, without modifying the code.</span>
+        </p>
+        <div class="proj-foot">
+          <ul class="stack"><li>Python</li><li>Playwright</li><li>Sheets API</li><li>OAuth 2.0</li><li>PySide6</li></ul>
+          <p class="impact"><span class="ilabel">Impact</span> 주기별 수동 취합 <span class="arrow">→</span> 원클릭 수집</p>
+        </div>
+      </li>
+
+      <li class="proj">
+        <div class="proj-top"><span class="idx">cs-report-collector</span><span class="ptype">Extension + Apps Script</span><a class="repo-link" href="https://github.com/intothinair0525/PF/blob/main/case-studies/report-collector-extension.md" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <h3 class="ptitle">Ops Report Collector</h3>
+        <p class="pko">운영툴 신고 내역 자동 취합</p>
+        <div class="proj-stats">
+          <div><span class="k">Period</span>2026.06.05 – 06.15</div>
+          <div><span class="k">Est. resource</span>0.00833 MM</div>
+        </div>
+        <p class="pdesc">
+          CS운영툴의 신고 내역을 Chrome 확장 프로그램이 수집하고, 서버리스(Apps Script) 백엔드로 Google Sheets에 적재합니다. 별도 인프라 없이 운영·유지보수 부담을 최소화했습니다.
+          <span class="en">A Chrome extension collects report entries from the CS ops tool and loads them into Sheets through a serverless Apps Script backend — no infrastructure to maintain.</span>
+        </p>
+        <div class="proj-foot">
+          <ul class="stack"><li>JavaScript</li><li>Chrome MV3</li><li>Vite</li><li>Google Apps Script</li></ul>
+          <p class="impact"><span class="ilabel">Impact</span> 수기 복사·정리 <span class="arrow">→</span> 버튼 한 번에 적재</p>
+        </div>
+      </li>
+
+      <li class="proj">
+        <div class="proj-top"><span class="idx">ckeditor-image-uploader</span><span class="ptype">Chrome Extension · MV3</span><a class="repo-link" href="https://github.com/intothinair0525/PF/blob/main/case-studies/ckeditor-image-uploader.md" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <h3 class="ptitle">CKEditor Multi-Image Uploader</h3>
+        <p class="pko">CKEditor 이미지 다중 업로드</p>
+        <div class="proj-stats">
+          <div><span class="k">Period</span>2026.07.07 – 08.13</div>
+          <div><span class="k">Est. resource</span>0.092 MM</div>
+        </div>
+        <p class="pdesc">
+          이미지를 한 장씩만 업로드할 수 있는 운영 어드민 에디터에서 업로드 창을 자동으로 반복 실행해 여러 이미지를 순차 업로드하는 크롬 확장 프로그램입니다. 단계별 타임아웃과 실패 건너뛰기 기능으로 대량 업로드의 안정성을 높였습니다.
+          <span class="en">A Chrome extension that automates CKEditor's single-image upload process, allowing multiple images to be uploaded sequentially. Per-step timeouts and skip-on-failure handling improve reliability when processing large batches.</span>
+        </p>
+        <div class="proj-foot">
+          <ul class="stack"><li>JavaScript</li><li>Chrome MV3</li><li>CKEditor 4</li><li>Node.js</li></ul>
+          <p class="impact"><span class="ilabel">Impact</span> 개별 업로드 <span class="arrow">→</span> 큐 일괄 업로드</p>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <section class="wrap approach" id="approach">
+    <div class="sec-head" style="padding-bottom:10px">
+      <h2>Approach <span class="ko">작업 방식</span></h2>
+    </div>
+    <p class="big">
+      현업의 문제를 발견하고 정의해, 실제 업무에 적용할 수 있는 자동화 도구로 구현하는 과정입니다.
+      <span class="en">A process of identifying and defining real-world problems, then turning them into practical automation solutions.</span>
+    </p>
+
+    <ol class="steps">
+      <li>
+        <span class="num">01</span>
+        <div>
+          <h3 class="step-title">Define <span class="ko">문제 정의</span></h3>
+          <p class="step-desc">실무자와 소통하며 반복 업무와 개선이 필요한 지점을 파악합니다.
+            <span class="en">Identify repetitive tasks and pain points through discussions with the people who do the work.</span>
+          </p>
+        </div>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <div>
+          <h3 class="step-title">Design <span class="ko">프로세스 설계</span></h3>
+          <p class="step-desc">기존 업무 흐름을 분석하고 자동화 범위와 실행 방식을 설계합니다.
+            <span class="en">Analyze existing workflows and define the scope and approach for automation.</span>
+          </p>
+        </div>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <div>
+          <h3 class="step-title">Build <span class="ko">구현</span></h3>
+          <p class="step-desc">AI 에이전트를 활용해 설계한 프로세스를 실제 프로그램으로 구현합니다.
+            <span class="en">Build working solutions based on the planned workflow, using AI agents as development tools.</span>
+          </p>
+        </div>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <div>
+          <h3 class="step-title">Verify <span class="ko">검증</span></h3>
+          <p class="step-desc">기능과 예외 상황을 테스트하고 오류 및 보안 문제를 점검합니다.
+            <span class="en">Test functionality and edge cases, checking for errors and security issues.</span>
+          </p>
+        </div>
+      </li>
+      <li>
+        <span class="num">05</span>
+        <div>
+          <h3 class="step-title">Ship <span class="ko">배포 및 적용</span></h3>
+          <p class="step-desc">실무 환경에 배포하고 사용 가이드를 제공해 현업에서 활용할 수 있도록 합니다.
+            <span class="en">Deploy the solution into the actual work environment and provide user guides for adoption.</span>
+          </p>
+        </div>
+      </li>
+    </ol>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-head" style="padding: 0 0 32px;">
+      <h2>Contact <span class="ko">연락처</span></h2>
+    </div>
+    <div class="grid">
+      <div class="links">
+        <a href="mailto:chunjh525@gmail.com"><span class="k">Email</span><span class="v">chunjh525@gmail.com</span></a>
+        <a href="https://github.com/intothinair0525"><span class="k">GitHub</span><span class="v">github.com/intothinair0525</span></a>
+      </div>
+      <p class="note">
+        원본 코드·데이터는 사내 자산이며 개인정보·내부 시스템 정보를 포함하여 비공개입니다. 본 페이지는 수행 내용을 민감 정보 없이 요약한 것입니다.
+        <span class="en">Source code and data are company-confidential (PII and internal system details). This page summarizes the work with all sensitive details removed.</span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function (ev) {
+        var t = document.querySelector(a.getAttribute("href"));
+        if (t) { ev.preventDefault(); t.scrollIntoView({ behavior: "smooth", block: "start" }); }
+      });
+    });
+  })();
+</script>
+</body>
+</html>
